@@ -1,0 +1,4 @@
+{
+    "data": "test/testdata/degreePoolData.csv",
+    "outdir": "report"
+}

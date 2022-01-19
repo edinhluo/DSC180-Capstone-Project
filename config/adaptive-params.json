@@ -1,0 +1,4 @@
+{
+    "data": "test/testdata/two_simdata.csv",
+    "outdir": "data/report"
+}
