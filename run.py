@@ -11,6 +11,8 @@ import degree_centrality_pool as dc
 import network as net
 
 from calculate_tests import tensor_simulation_3d
+from predict_model_tensor import predict_tensor_output
+from train_model_tensor import tensor_simulation_2d
 
 def main(targets):
     
@@ -32,6 +34,36 @@ def main(targets):
         net.disease_spread(**network_config)
     if 'degree' in targets:
         dc.test(**degree_config)
+        
+    if 'tensor' in targets:
+        if 'predict' in targets:
+            print('Enter the location of the pooling matrix:')
+            A_matrix = input()
+            print('Enter the location of the pooled output vector')
+            Y_vector = input()
+            
+            with open(A_matrix, 'r') as f:
+                pools = f.readlines()
+                for i in range(len(pools)):
+                    pools[i] = list(map(int, list(pool.strip())))
+                A = np.array(pools)
+            
+            with open(Y_vector, 'r') as f:
+                output_Y = f.readlines()
+                for vector in output_Y:
+                    Y = np.array(list(map(int, list(vector.strip()))))
+            
+            print(predict_tensor_output(A, Y))
+                    
+
+        else:
+            print('Enter the amount of samples:')
+            sample = input()
+             try:
+                sample_int = int(input)
+                print(tensor_simulation_2d(sample_int))
+            except ValueError:
+                print("Input is not an integer.")
 
     if 'test' in targets:
         run_nonadaptive(**nonadaptive_config)
