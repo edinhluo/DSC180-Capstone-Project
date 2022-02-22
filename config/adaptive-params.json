@@ -1,8 +1,8 @@
 {
     "data": "test/testdata/two_simdata.csv",
     "outdir": "data/report",
-    "infected": 70,
+    "infected": 5,
     "population": 500,
-    "tests": 5,
+    "tests": 70,
     "pool_size": 32
 }
