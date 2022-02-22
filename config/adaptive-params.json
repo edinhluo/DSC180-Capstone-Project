@@ -1,6 +1,6 @@
 {
     "data": "test/testdata/two_simdata.csv",
-    "outdir": "data/report"
+    "outdir": "data/report",
     "infected": 70,
     "population": 500,
     "tests": 5,
