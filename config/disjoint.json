@@ -1,0 +1,6 @@
+{
+    "infected": 5,
+    "population": 500,
+    "tests": 40,
+    "pool_size": 32
+}
