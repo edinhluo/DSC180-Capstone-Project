@@ -1,4 +1,4 @@
-# COVIDPoolTesting
+# COVID-19 Group Testing Strategies
 
 ## Abstract
 
