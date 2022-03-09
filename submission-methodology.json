@@ -1,4 +1,0 @@
-{
-    "dockerhub-id": "j2chu/docker-methodology",
-    "build-script": "python run.py"
-}

@@ -28,6 +28,8 @@ USER jovyan
 
 RUN pip install --no-cache-dir networkx scipy python-math tensorflow
 RUN conda install pandas numpy
+RUN pip install seirsplus
+RUN pip install -U imbalanced-learn
 
 # Override command to disable running jupyter notebook at launch
 # CMD ["/bin/bash"]

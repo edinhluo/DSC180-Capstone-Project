@@ -14,6 +14,9 @@ from calculate_tests import tensor_simulation_3d
 from predict_model_tensor import predict_tensor_output
 from train_model_tensor import tensor_simulation_2d
 
+import extendedNet_Pipe as ep
+import BRC_pipe as bp
+
 def main(targets):
     
     nonadaptive_config = json.load(open('config/nonadaptive-params.json'))
@@ -21,6 +24,7 @@ def main(targets):
     equal_config = json.load(open('config/equal-params.json'))
     network_config = json.load(open('config/network_params.json'))
     degree_config = json.load(open('config/degree_params.json'))
+    extended_config = json.load(open('config/extendedNet_params.json'))
 
     
     if 'nonadaptive' in targets:
@@ -34,6 +38,12 @@ def main(targets):
         net.disease_spread(**network_config)
     if 'degree' in targets:
         dc.test(**degree_config)
+
+    if 'extendedNet' in targets:
+        ep.extendedNet(**extended_config)
+
+    if 'BRC' in targets:
+        bp.BRFpipe(**extended_config)
         
     if 'tensor' in targets:
         if 'predict' in targets:
@@ -71,6 +81,8 @@ def main(targets):
         run_equal(**equal_config)
         net.disease_spread(**network_config)
         dc.test(**degree_config)
+        ep.extendedNet(**extended_config)
+        bp.BRFpipe(**extended_config)
 
         with open('test/testdata/Sample961Infected4.txt', "r") as f:
             str_X = f.readline()
