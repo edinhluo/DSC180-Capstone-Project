@@ -1,4 +1,0 @@
-{
-    "dockerhub-id": "mengfanchen4747/dockerwork:latest",
-    "build-script": "python run.py"
-}

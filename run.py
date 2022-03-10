@@ -9,6 +9,7 @@ from disjoint import run_equal
 import simple_pool_func as sp
 import degree_centrality_pool as dc
 import network as net
+import numpy as np
 
 from calculate_tests import tensor_simulation_3d
 from predict_model_tensor import predict_tensor_output
@@ -55,7 +56,7 @@ def main(targets):
             with open(A_matrix, 'r') as f:
                 pools = f.readlines()
                 for i in range(len(pools)):
-                    pools[i] = list(map(int, list(pool.strip())))
+                    pools[i] = list(map(int, list(pools.strip())))
                 A = np.array(pools)
             
             with open(Y_vector, 'r') as f:
@@ -69,7 +70,7 @@ def main(targets):
         else:
             print('Enter the amount of samples:')
             sample = input()
-             try:
+            try:
                 sample_int = int(input)
                 print(tensor_simulation_2d(sample_int))
             except ValueError:

@@ -101,11 +101,10 @@ def find_infected_binary(A,y, index = None):
 ### --------------------------------------------------------------- ###
 
 ### Create Disjoint Pooling Matrix where samples tested evenly
-def create_disjoint(tests, samples, rate, pool_size = None):
+def create_disjoint(tests, samples, infected, pool_size = None):
     
     ### Create the Pooling Matrix
     A = np.zeros((tests, samples))
-    infected = np.round(samples * rate)
 
     if pool_size is None:
         pool_size = 32
@@ -141,9 +140,9 @@ def create_disjoint(tests, samples, rate, pool_size = None):
     return A
 
 ### Creates Disjoint Simulation
-def disjoint_pool_sim(tests, samples, rate, infected, pool_size = None):
+def disjoint_pool_sim(tests, samples, infected, pool_size = None):
 
-    A = create_disjoint(tests,samples, rate, pool_size)
+    A = create_disjoint(tests,samples, infected, pool_size)
     
     ### Create the "Infected" Binary X Vector
     X = generate_infected(samples, infected)
@@ -180,14 +179,16 @@ def run_nonadaptive(tests, samples, infected, pool_size, simulations):
         A,X,Y = pool_sim(tests,samples, infected, pool_size)
         predX = find_infected_binary(A,Y)
         acc.append(eval_model(predX,X)["Accuracy"][0])
-    # sns.histplot(acc)
-    # print(np.mean(acc),np.std(acc))
+    return acc
 
-def run_disjoint(tests, samples, rate, infected, pool_size, simulations):
+def run_disjoint(tests, samples, infected, pool_size, simulations):
     acc = []
     for _ in range(simulations):
-        A,X,Y = pool_sim(tests,samples, rate, infected, pool_size)
+        A,X,Y = create_disjoint(tests,samples, infected, pool_size)
         predX = find_infected_binary(A,Y)
         acc.append(eval_model(predX,X)["Accuracy"][0])
-    # sns.histplot(acc)
-    # print(np.mean(acc),np.std(acc))
+    return acc
+
+def results():
+    NA_runs = run_nonadaptive(80,500,5,32,1000)
+    DJ_runs = run_nonadaptive(40,500,5,32,1000)
