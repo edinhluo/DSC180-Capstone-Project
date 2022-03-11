@@ -71,7 +71,7 @@ def main(targets):
             print('Enter the amount of samples:')
             sample = input()
             try:
-                sample_int = int(input)
+                sample_int = int(sample)
                 print(tensor_simulation_2d(sample_int))
             except ValueError:
                 print("Input is not an integer.")
