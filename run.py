@@ -3,10 +3,7 @@ import json
 import os
 
 sys.path.insert(0, 'src')
-from nonadaptive import run_nonadaptive
-from adaptive import run_adaptive
-from disjoint import run_equal
-from Pooling_Simulations import DJ_results, NA_results
+from pooling_simulations import DJ_results, NA_results
 import simple_pool_func as sp
 import degree_centrality_pool as dc
 import network as net
