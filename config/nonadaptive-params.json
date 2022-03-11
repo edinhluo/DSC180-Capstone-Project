@@ -1,8 +1,6 @@
 {
-    "data": "test/testdata/adaptivedata.csv",
-    "outdir": "data/report",
-    "infected": 5,
-    "population": 500,
-    "tests": 70,
-    "pool_size": 32
+    "infected": 10,
+    "population": 1000,
+    "tests": 80,
+    "pool_size": 100
 }
