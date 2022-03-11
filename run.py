@@ -6,6 +6,7 @@ sys.path.insert(0, 'src')
 from nonadaptive import run_nonadaptive
 from adaptive import run_adaptive
 from disjoint import run_equal
+from Pooling_Simulations import results
 import simple_pool_func as sp
 import degree_centrality_pool as dc
 import network as net
@@ -27,13 +28,8 @@ def main(targets):
     degree_config = json.load(open('config/degree_params.json'))
     extended_config = json.load(open('config/extendedNet_params.json'))
 
-    
-    if 'nonadaptive' in targets:
-        run_nonadaptive(**nonadaptive_config)
-    if 'adaptive' in targets:
-        run_adaptive(**adaptive_config)
-    if 'recursive' in targets:
-        run_equal(**equal_config)
+    if "pooling" in targets:
+        results()
 
     if 'network' in targets:
         net.disease_spread(**network_config)
@@ -77,9 +73,7 @@ def main(targets):
                 print("Input is not an integer.")
 
     if 'test' in targets:
-        run_nonadaptive(**nonadaptive_config)
-        run_adaptive(**adaptive_config)
-        run_equal(**equal_config)
+        results()
         net.disease_spread(**network_config)
         dc.test(**degree_config)
         ep.extendedNet(**extended_config)

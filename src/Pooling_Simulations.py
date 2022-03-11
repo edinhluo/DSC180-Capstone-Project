@@ -190,5 +190,26 @@ def run_disjoint(tests, samples, infected, pool_size, simulations):
     return acc
 
 def results():
-    NA_runs = run_nonadaptive(80,500,5,32,1000)
+    NA_runs = run_nonadaptive(80,1000, 10, 100 ,1000)
     DJ_runs = run_nonadaptive(40,500,5,32,1000)
+
+    NA_str1 = "For a population size of 1000, 10 infected, size 100 pool size in 1000 simulations of the Non Adaptive Scheme:"
+    NA_str2 = "Average accuracy:" + str(NA_runs[0]) 
+    NA_str3 = "Average standard deviation:" +str(NA_runs[1])
+    NA_str4 = "Over " + str(NA_runs[0]*1000 - 10) + " people were detected COVID-19 negative, while the remaining are declared positive and tested further." 
+    
+    print(NA_str1)
+    print(NA_str2)
+    print(NA_str3)
+    print(NA_str4)
+
+    DJ_str1 = "For a population size of 500, 5 infected, size 32 pool size in 1000 simulations of the Disjoint Scheme:"
+    DJ_str2 = "Average accuracy:" + str(DJ_runs[0]) 
+    DJ_str3 = "Average standard deviation:" +str(DJ_runs[1])
+    DJ_str4 = "Over " + str(DJ_runs[0]*500 - 5) + " people were detected COVID-19 negative, while the remaining are declared positive and tested further."
+
+    print(DJ_str1)
+    print(DJ_str2)
+    print(DJ_str3)
+    print(DJ_str4)
+    
