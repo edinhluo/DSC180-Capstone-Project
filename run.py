@@ -19,7 +19,6 @@ import BRC_pipe as bp
 def main(targets):
     
     nonadaptive_config = json.load(open('config/nonadaptive-params.json'))
-    adaptive_config = json.load(open('config/adaptive-params.json'))
     disjoint_config = json.load(open('config/disjoint-params.json'))
     network_config = json.load(open('config/network_params.json'))
     degree_config = json.load(open('config/degree_params.json'))
